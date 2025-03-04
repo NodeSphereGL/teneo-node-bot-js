@@ -11,13 +11,13 @@ const choice = {
 // Configuration for API keys for different captcha services.
 // Fill in your respective API keys.
 const config = {
-    CAPMONSTER_API_KEY: "YOUR_CAPMONSTER_API_KEY",
-    TWO_CAPTCHA_API_KEY: "YOUR_2CAPTCHA_API_KEY",
+    CAPMONSTER_API_KEY: "40b5e8d9fefe09f87db6e03f4837e7bb",
+    TWO_CAPTCHA_API_KEY: "d9a1751716a9104e99388b00f04f40cb",
     ANTICAPTCHA_API_KEY: "YOUR_ANTICAPTCHA_API_KEY"
 };
 
 // Select which captcha service to use.
 // Captcha bypass configuration: choose one of 'capmonster', '2captcha', or 'anticaptcha'
-const ServiceChoice = choice.c1; // Change to your desired service c1,c2,or c3
+const ServiceChoice = choice.c2; // Change to your desired service c1,c2,or c3
 
 module.exports = { config, ServiceChoice };

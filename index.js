@@ -40,9 +40,15 @@ const {
     SocksProxyAgent
 } = require('socks-proxy-agent');
 const readline = require('readline');
-const {
-    accountLists
-} = require('./accounts.js');
+
+const getAccountLists = require('./accounts.js');
+let accountLists = [];
+(async () => {
+    accountLists = await getAccountLists();
+})();
+
+console.log('accountLists: ', accountLists);
+
 const { config, ServiceChoice } = require('./captchaconfig.js');
 
 const cl = {
@@ -61,7 +67,7 @@ const cl = {
 
 class TeneoBot {
     constructor() {
-        this.wita = 'Asia/Makassar'; // "Adjust for Your Time Zone (e.g., 'Asia/Makassar' in Bali, Indonesia)"
+        this.wita = 'UTC'; // "Adjust for Your Time Zone (e.g., 'Asia/Makassar' in Bali, Indonesia)"
         this.apiKey = 'OwAG3kib1ivOJG4Y0OCZ8lJETa6ypvsDtGmdhcjB';
         this.loginUrl = 'https://auth.teneo.pro/api/login';
         this.userUrl = 'https://auth.teneo.pro/api/user';
@@ -247,7 +253,7 @@ class TeneoBot {
 
         if (proxy.startsWith('http://') || proxy.startsWith('https://')) {
             return new HttpsProxyAgent(proxy);
-        } else if (proxy.startsWith('socks://') || proxy.startsWith('socks5://')) {
+        } else if (proxy.startsWith('socks://') || proxy.startsWith('socks5://') || proxy.startsWith('socks5h://')) {
             return new SocksProxyAgent(proxy);
         }
 
