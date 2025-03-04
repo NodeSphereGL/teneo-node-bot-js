@@ -53,9 +53,14 @@ async function getAccountLists() {
   const accountLists = await loadAccounts(accountsFile);
 
   // Write to proxy.txt, each proxy on a new line
-  const proxyFile = path.resolve(__dirname, 'proxy.txt');
-  // console.log('proxyList: ', proxyFile, proxyList);
-  fs.writeFileSync(proxyFile, proxyList.join('\n'), 'utf8');
+  const proxyFile1 = path.resolve(__dirname, 'proxies.txt'); // Current directory
+  const proxyFile2 = path.resolve(__dirname, '../proxy.txt'); // Parent directory
+
+  // Write proxies to both files
+  fs.writeFileSync(proxyFile1, proxyList.join('\n'), 'utf8');
+  fs.writeFileSync(proxyFile2, proxyList.join('\n'), 'utf8');
+
+  console.log('✅ Proxies written to:', proxyFile1, 'and', proxyFile2);
 
   return accountLists;
 }

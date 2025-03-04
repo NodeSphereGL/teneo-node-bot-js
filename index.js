@@ -35,14 +35,6 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 const { SocksProxyAgent } = require('socks-proxy-agent');
 const readline = require('readline');
 
-const getAccountLists = require('./accounts.js');
-let accountLists = [];
-(async () => {
-    accountLists = await getAccountLists();
-})();
-
-console.log('accountLists: ', accountLists);
-
 const { DataAllAccount } = require('./DataAllAccount');
 
 const cl = {

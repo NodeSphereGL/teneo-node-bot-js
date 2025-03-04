@@ -36,7 +36,7 @@ const { HttpsProxyAgent } = require('https-proxy-agent');
 const { SocksProxyAgent } = require('socks-proxy-agent');
 
 const { config } = require('./config');
-const { accountLists } = require('./accounts');
+const getAccountLists = require('./accounts.js');
 
 const Colors = {
   Gold: "\x1b[38;5;220m",
@@ -318,6 +318,9 @@ async function loginWithRetry(account, maxRetries = 5) {
 
 async function main() {
   await initDataAllAccountFile();
+
+  const accountLists = await getAccountLists();
+  console.log('accountLists: ', accountLists);
 
   for (let i = 0; i < accountLists.length; i++) {
     const account = accountLists[i];
